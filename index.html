@@ -4,13 +4,19 @@
   <meta charset="utf-8">
   <title>Loading...</title>
   <script>
-    // Step 1: ke logout Google
-    if (!sessionStorage.getItem("loggedOut")) {
-      sessionStorage.setItem("loggedOut", "1");
-      window.location.href = "https://accounts.google.com/Logout";
+    const FLAG = "forceLogoutDone";
+
+    if (!sessionStorage.getItem(FLAG)) {
+      sessionStorage.setItem(FLAG, "1");
+
+      // FULL logout + continue
+      window.location.href =
+        "https://accounts.google.com/Logout?continue=https://www.google.com";
+
     } else {
-      // Step 2: balik ke Google (atau halaman lain)
-      sessionStorage.removeItem("loggedOut");
+      sessionStorage.removeItem(FLAG);
+
+      // landing page akhir (bebas)
       window.location.href = "https://www.google.com";
     }
   </script>

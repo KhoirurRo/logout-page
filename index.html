@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>Loading...</title>
-</head>
-<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;">
-  <p>Checking session...</p>
-
-  <!-- Trigger Google Logout -->
-  <iframe 
-    src="https://accounts.google.com/logout" 
-    style="display:none">
-  </iframe>
-
   <script>
-    setTimeout(() => {
+    // Step 1: ke logout Google
+    if (!sessionStorage.getItem("loggedOut")) {
+      sessionStorage.setItem("loggedOut", "1");
+      window.location.href = "https://accounts.google.com/Logout";
+    } else {
+      // Step 2: balik ke Google (atau halaman lain)
+      sessionStorage.removeItem("loggedOut");
       window.location.href = "https://www.google.com";
-    }, 1200);
+    }
   </script>
-</body>
+</head>
+<body></body>
 </html>

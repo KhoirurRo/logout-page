@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading...</title>
+</head>
+<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;">
+  <p>Checking session...</p>
+
+  <!-- Trigger Google Logout -->
+  <iframe 
+    src="https://accounts.google.com/Logout" 
+    style="display:none">
+  </iframe>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "https://www.google.com";
+    }, 1200);
+  </script>
+</body>
+</html>

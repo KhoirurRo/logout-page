@@ -25,11 +25,6 @@
     h1 {
       color: #ff5252;
       font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
     }
   </style>
 </head>
@@ -39,11 +34,25 @@
   <h1>⚠️ PERHATIAN</h1>
   <p>
     <strong>Jangan login Google pakai profile Chrome ini.</strong><br><br>
-    Akun <b>tidak akan tersimpan</b> dan bisa logout otomatis.<br>
-    Gunakan <b>Incognito</b> atau <b>profile Chrome lain</b>.
+    Akun tidak akan tersimpan dan akan otomatis logout.<br>
+    Gunakan <b>Incognito</b> atau profile lain.
   </p>
-  <small>Halaman ini dibuat untuk keamanan akun.</small>
+  <small>Halaman ini dibuat untuk personal akun.</small>
 </div>
+
+<script>
+  // kalau BELUM logout
+  if (!sessionStorage.getItem("alreadyLogout")) {
+    sessionStorage.setItem("alreadyLogout", "1");
+
+    // kasih waktu baca 1.5 detik
+    setTimeout(() => {
+      window.location.href =
+        "https://accounts.google.com/Logout?continue=https://khoirurro.github.io/logout-page/";
+    }, 5000);
+  }
+</script>
+
 
 </body>
 </html>

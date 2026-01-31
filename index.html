@@ -12,7 +12,7 @@
       justify-content: center;
       background: #111;
       color: #fff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: system-ui, sans-serif;
       text-align: center;
     }
     .box {
@@ -23,19 +23,8 @@
       background: #1a1a1a;
     }
     h1 {
-      font-size: 2.2rem;
       color: #ff5252;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-    small {
-      display: block;
-      margin-top: 20px;
-      opacity: 0.6;
+      font-size: 2.2rem;
     }
   </style>
 </head>
@@ -44,20 +33,21 @@
 <div class="box">
   <h1>⚠️ PERHATIAN</h1>
   <p>
-    <strong>JANGAN login Google pakai profile Chrome ini.</strong><br><br>
-    Akun <em>tidak akan tersimpan</em> dan akan otomatis logout.<br>
-    Gunakan <strong>Incognito</strong> atau profile lain jika ingin login.
+    <strong>Jangan login Google pakai profile Chrome ini.</strong><br><br>
+    Akun tidak akan tersimpan dan akan otomatis logout.<br>
+    Gunakan <b>Incognito</b> atau profile lain.
   </p>
   <small>Halaman ini dibuat untuk personal akun.</small>
 </div>
 
-<!-- Logout Google -->
 <script>
-  if (!sessionStorage.getItem("logoutDone")) {
-    sessionStorage.setItem("logoutDone", "1");
+  // cegah loop
+  if (!sessionStorage.getItem("logoutOnce")) {
+    sessionStorage.setItem("logoutOnce", "1");
+
+    // logout + balik ke GOOGLE (AMAN)
     window.location.href =
-      "https://accounts.google.com/Logout?continue=" +
-      encodeURIComponent(location.href);
+      "https://accounts.google.com/Logout?continue=https://www.google.com";
   }
 </script>
 

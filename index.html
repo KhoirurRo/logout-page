@@ -1,25 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <title>Loading...</title>
-  <script>
-    const FLAG = "forceLogoutDone";
-
-    if (!sessionStorage.getItem(FLAG)) {
-      sessionStorage.setItem(FLAG, "1");
-
-      // FULL logout + continue
-      window.location.href =
-        "https://accounts.google.com/Logout?continue=https://www.google.com";
-
-    } else {
-      sessionStorage.removeItem(FLAG);
-
-      // landing page akhir (bebas)
-      window.location.href = "https://www.google.com";
+  <meta charset="UTF-8">
+  <title>Perhatian</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
     }
-  </script>
+    .box {
+      max-width: 700px;
+      padding: 40px;
+      border: 2px solid #ff5252;
+      border-radius: 12px;
+      background: #1a1a1a;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #ff5252;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    small {
+      display: block;
+      margin-top: 20px;
+      opacity: 0.6;
+    }
+  </style>
 </head>
-<body></body>
+<body>
+
+<div class="box">
+  <h1>⚠️ PERHATIAN</h1>
+  <p>
+    <strong>JANGAN login Google pakai profile Chrome ini.</strong><br><br>
+    Akun <em>tidak akan tersimpan</em> dan akan otomatis logout.<br>
+    Gunakan <strong>Incognito</strong> atau profile lain jika ingin login.
+  </p>
+  <small>Halaman ini dibuat untuk personal akun.</small>
+</div>
+
+<!-- Logout Google -->
+<script>
+  if (!sessionStorage.getItem("logoutDone")) {
+    sessionStorage.setItem("logoutDone", "1");
+    window.location.href =
+      "https://accounts.google.com/Logout?continue=" +
+      encodeURIComponent(location.href);
+  }
+</script>
+
+</body>
 </html>
